@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> &#127746; Weather Forecast </title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <link href="style.css" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+		  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+		  crossorigin=""/>
+	  
+		 <!-- Make sure you put this AFTER Leaflet's CSS -->
+		 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+		   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+		   crossorigin=""></script>
+		   	
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>	
+		 
+		 
+		 
+		 <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+	<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+		 
+		 
+		
+		 <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.0/src/L.Control.Locate.min.js"></script>
+		 
+		 
+
+
+
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css' rel='stylesheet' />
+<!--[if lt IE 9]>
+  <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.ie.css' rel='stylesheet' />
+<![endif]-->
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
+	
+		 <!-- Load geocoding plugin after Leaflet (locationiq) 
+<link rel="stylesheet" href="https://maps.locationiq.com/v2/libs/leaflet-geocoder/1.9.6/leaflet-geocoder-locationiq.min.css">
+<script src="https://maps.locationiq.com/v2/libs/leaflet-geocoder/1.9.6/leaflet-geocoder-locationiq.min.js"></script>
+		 
+  -->
+  
+ 
+ <script src="leaflet.ajax.min.js"></script>
+ 
+ 
+
+</head>
+<body class="body1">
+
+
+
+<!-- Nav bars -->
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="home.html"><img alt ='logo' src="img/rsz_logo_green.png" width="110" height="50"><strong>Ontario</strong> Weather</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+  </div>
+      <div class="navbar-collapse collapse"  id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+      <a class="nav-link" href="index.html"><strong> Home </strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="method.html"><strong> Methodology </strong></a>
+          </li>
+    <li class="nav-item">
+            <a class="nav-link active" href="map.html"><strong> Map </strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html"><strong> Contact </strong></a>
+          </li>
+        </ul>
+      </div>
+</nav>
+
+<!--
+<div class='input-group col-md-4' id='search' style="padding-left:16px">
+  <input class="form-control py-2" type="search" placeholder="Search Location" id="example-search-input">
+      <span class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button">
+            <i class="fa fa-search"></i>
+        </button>
+      </span>
+</div> -->
+
+
+
+
+   <!-- id="navbarResponsive" --> 
+
+<div class="background">
+<div class="push"></div>
+<div>
+  <div id ="mapid"></div>
+	  <!-- For the search box -->
+	<div id="search-box"></div>
+	<!-- To display the result -->
+	<div id="result"></div>
+	
+	
+  <div class="transbox">
+  <div id='output' class='ui-control'>
+  <h2 id="forecast">Hourly Forecast</h2>
+  <p id="message">Click any location in Ontario for the current weather</p>
+  
+  
+  <!--<div id="temp">
+	<h3>Click a location anywhere in Ontario to get the weather</h3>-->
+
+ <table id="temp" style="width:90%">
+  
+    <tr>
+    <td class="head">Time</td>
+    <td class="head">Temp</td>
+  </tr>
+  <tr>
+    
+    <td id="ho0"></td>
+    <td id='t0'></td>
+  </tr>
+  <tr>
+    
+    <td id="ho1"></td>
+    <td id='t1'></td>
+  </tr>
+  <tr>
+    
+    <td id="ho2"></td>
+    <td id='t2'></td>
+  </tr>
+  <tr>
+    
+    <td id="ho3"></td>
+    <td id='t3'></td>
+  </tr>
+  <tr>
+   
+    <td id="ho4"></td>
+    <td id='t4'></td>
+  </tr>
+  <tr>
+    
+    <td id="ho5"></td>
+    <td id='t5'></td>
+  </tr>
+</table>
+  <!--</div>-->
+  
+  
+ <table id="wind" style="width:90%">
+  <tr>
+    <td class="head">Time</td>
+    <td class="head">Wind</td>
+  </tr>
+    
+  <tr>
+    <td id="ho0w"></td>
+    <td id='w0'></td>
+  </tr>
+  <tr>
+    
+    <td id="ho1w"></td>
+    <td id='w1'></td>
+  </tr>
+  <tr>
+    
+    <td id="ho2w"></td>
+    <td id='w2'></td>
+  </tr>
+  <tr>
+    
+    <td id="ho3w"></td>
+    <td id='w3'></td>
+  </tr>
+  <tr>
+    
+    <td id="ho4w"></td>
+    <td id='w4'></td>
+  </tr>
+  <tr>
+    
+    <td id="ho5w"></td>
+    <td id='w5'></td>
+  </tr>
+</table>
+
+<!--<div id="wind">
+</div>-->
+      <!--<p style="background-color:rgb(5, 22, 75); color:white; font-size: 90%;"><strong>Mousemove: </strong></p><strong><code id='mousemove' style='font-size: 100%;color:rgb(2, 14, 46);'></code></strong><br/>
+      <p style="background-color:rgb(5, 22, 75); color:white; font-size: 90%;"><strong>Click: </strong></p><strong><code id='click' style='font-size: 100%; color:rgb(2, 14, 46);'></code></strong><br/>
+      -->
+    </div>
+	<div >
+	<form id='buttons'>
+  <input type="button" value=" &#176;C " onclick="ccon()">
+	
+  <input type="button" value=" &#176;F " onclick="tcon()">
+	
+  <input type="button" value=" KM/H " onclick="kcon()">
+	
+  <input type="button" value=" MPH " onclick="mcon()">
+	</form>
+	</div>
+	<div>
+	
+	</div>
+  </div>
+</div>
+</div>
+<!--</div> -->
+<!--- Footer 
+<footer id = "mapfooter">
+  <div class="footer fixed-bottom"></div>
+  <div class="container-fluid padding">
+  <div class="row text-center">
+    <div class="col-md-4">
+      <img alt ='logo' src="img/rsz_logo_green.png" width="110" height="50">
+    </div>
+    <div class="col-md-4">
+      <img alt ='logo' src="img/arubrum.png" width="110" height="50">
+    </div>
+    <div class="col-md-4">
+      <img src="img/fleminglogo.png" alt= "fleming">
+    </div>
+    <div class="col-12">
+      <!--<hr class="light">-->
+     <!--- <h5>&copy; Fahrenheit 2021</h5>
+    </div>
+  </div>
+  </div>
+  </footer> -->
+
+</body>	
+  
+  <script type="text/javascript" src="main.js" defer=""></script>
+
+</html>

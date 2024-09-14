@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> &#127746; Weather Forecast </title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <link href="style.css" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- Nav bars -->
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="home.html"><img alt ='logo' src="img/rsz_logo_green.png" width="110" height="50"><strong>Ontario</strong> Weather</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+  </div>
+      <div class="navbar-collapse collapse"  id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+      <a class="nav-link" href="index.html"><strong> Home </strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="method.html"><strong> Methodology </strong></a>
+          </li>
+    <li class="nav-item">
+            <a class="nav-link" href="map.html"><strong> Map </strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html"><strong> Contact </strong></a>
+          </li>
+        </ul>
+      </div>
+</nav>
+
+<!--- Image Slider -->
+<div id="slides" class="carousel slide" data-ride="carousel">
+<ul class="carousel-indicators">
+  <li data-target="#slides" data-slide-to="0" class="active"></li>
+  <li data-target="#slides" data-slide-to="1"></li>
+  <li data-target="#slides" data-slide-to="2"></li> 
+</ul> 
+<div class="carousel-inner">
+  <div class="carousel-item active">
+    <img alt= "weatherBackground" src="img/sc5.png">
+    <div class="carousel-caption">
+      <h1 class="display-2x"> Using Open Source Technologies to Interpolate Weather Across Ontario</h1>
+      <h3>Arubrum Innovations</h3>
+    </div>
+  </div>
+  <div class="carousel-item">
+    <img alt= "pressureBackground" src="img/sc4.png">
+    <div class="carousel-caption">
+      <h1 class="display-2x"> Using Open Source Technologies to Interpolate Weather Across Ontario</h1>
+      <h3>Arubrum Innovations</h3>
+    </div>
+  </div>
+  <div class="carousel-item">
+    <img alt= "cloudBackground" src="img/sc3.png">
+    <div class="carousel-caption">
+      <h1 class="display-2x"> Using Open Source Technologies to Interpolate Weather Across Ontario</h1>
+      <h3>Arubrum Innovations</h3>
+    </div>
+  </div>
+</div> 
+</div>
+
+<div class="container-fluid padding">
+<div class="row welcome text-center">
+  <div class="col-12">
+    <h1 class="display-4">Abstract</h1>
+  </div>
+  <hr class="light">
+  <div class="col-12">
+    <h2 class="lead">Current popular weather services in Ontario provide the user with weather information 
+	corresponding to the closest weather station. Unfortunately, as is often the case, the nearest weather 
+	station to a given location can be many kilometers away. When this is the case, the user’s weather 
+	information can be vastly different from reality. To fix this problem, Owen Andrews-Simons of Arubrum 
+	Innovations has asked our group to develop a product that can estimate the actual weather at the user’s 
+	exact location (or chosen location). Additionally, we were tasked to provide a new report every hour 
+	using only open-source technologies and solutions (no-paid licenses). To accomplish this, our team has 
+	developed an interpolation model in QGIS, a robust extract transfer and load (ETL) pre-process workflow 
+	using python, and a web map weather report that utilizes Leaflet. Our methodologies used were (1) data 
+	acquisition and pre-processing, (2) database design, (3) spatial and statistical analysis, (4) 
+	programming/customization, and (5) visualization. Our project has met our client’s expectations of 
+	delivering an automated location-specific weather web report of Ontario while using open-source technology.   </h2>
+  </div>
+  
+</div>
+</div>
+
+<div class="container-fluid padding">
+<div class="row welcome text-center">
+  <div class="col-12">
+  </div>
+  <hr class="light">
+  <div class="col-12">
+    <img  alt= "flowdiagram" class="flowdiagram" src= "img/flowdiagram.png">
+  </div>
+</div>
+</div>
+
+
+
+<!--- Meet the team -->
+<div class="container-fluid padding">
+<div class="row welcome text-center">
+  <div class="col-12">
+    <h1 class="display-4"> Meet the Team </h1>
+  </div>
+  <!--Horizontal rule-->
+  <hr class="light"> 
+</div>
+</div>
+
+<!--- Cards -->
+<div class="container-fluid padding">
+<div class="row padding">
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="card">
+      <img  alt= "aaron" class="card-img-top" src= "img/Teammate.jpg">
+      <div class="card-body">
+        <h3 class="card-title text-center"> Teammate 1</h3>
+        <h3 class="card-text text-center"> GIS & Web Developer </h3>
+        <p class="card-text text-center">He is currently studying GIS (Applications Specialist) at Fleming College.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="card">
+      <img class="card-img-top" src= "img/hyerin.jpg" alt= "hyerin">
+      <div class="card-body">
+        <h3 class="card-title text-center"> Hyerin Mun </h3>
+        <h3 class="card-text text-center"> GIS & Web Developer </h3>
+        <p class="card-text text-center"> Hyerin Mun is currently a GIS-Application Specialist at Fleming College. 
+          She recently graudated from University of Saskatchewan with a BSc. in Geology. 
+          She is responsible for Spatial Analysis and Web Development.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="card">
+      <img class="card-img-top" src= "img/Teammate.jpg" alt= "toby">
+      <div class="card-body">
+        <h3 class="card-text text-center"> Teammate 2</h3>
+        <h3 class="card-text text-center"> GIS & Web Developer </h3>
+        <p class="card-text text-center">He currently is a student of the GIS-Application Specialist program at Fleming college.
+	 </p>
+      </div>
+    </div>
+  </div>
+</div> 
+</div>
+
+<!--- Software used -->
+<div class="container-fluid padding">
+  <div class="row welcome text-center">
+    <div class="col-12">
+      <h1 class="display-4"> Software Used </h1>
+    </div>
+    <!--Horizontal rule-->
+    <hr class="light">
+  </div>
+  </div>
+
+<!--- Four Columns Section -->
+<!--https://fontawesome.com/v4.7.0/icons/-->
+<div class="container-fluid padding">
+<div class="row text-center padding">
+  <div class="col">
+    <i class="fab fa-quora"></i>
+    <h3>QGIS</h3>
+    <p> Built with the latest version of QGIS</p>
+  </div>
+  <div class="col">
+    <i class="fa fa-leaf"></i>
+    <h3>LEAFLET</h3>
+    <p> Built with the latest version of leaflet</p>
+  </div>
+  <div class="col">
+    <i class="fas fa-code"></i>
+    <h3>HTML5</h3>
+    <p> Built with the latest version of HTML, HTML5</p>
+  </div>
+  <div class="col">
+    <i class="fab fa-css3"></i>
+    <h3>CSS3</h3>
+    <p> Built with the latest version of CSS, CSS3</p>
+  </div>
+  <div class="col">
+    <i class="fas fa-bold"></i>
+    <h3>BOOTSTRAP</h3>
+    <p> Built with the latest version of bootstrap</p>
+  </div>
+</div>
+<hr class="my-4">
+</div>
+
+<!--- Footer -->
+<footer>
+<div class="footer fixed-bottom"></div>
+<div class="container-fluid padding">
+<div class="row text-center">
+  <div class="col-md-4">
+    <img alt ='logo' src="img/rsz_logo_green.png" width="110" height="50">
+  </div>
+  <div class="col-md-4">
+    <img alt ='logo' src="img/arubrum.png" width="110" height="50">
+  </div>
+  <div class="col-md-4">
+    <img src="img/fleminglogo.png" alt= "fleming">
+  </div>
+  <div class="col-12">
+    <hr class="light">
+    <h5>&copy; Fahrenheit 2021</h5>
+  </div>
+</div>
+</div>
+</footer>
+
+</body>
+</html>
+

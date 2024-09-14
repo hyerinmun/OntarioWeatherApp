@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> &#127746; Weather Forecast </title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <link href="style.css" rel="stylesheet">
+
+</head>
+
+<body>
+<!-- Nav bars -->
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="home.html"><img alt ='logo' src="img/rsz_logo_green.png" width="110" height="50"><strong>Ontario</strong> Weather</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+  </div>
+      <div class="navbar-collapse collapse"  id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+      <a class="nav-link" href="index.html"><strong> Home </strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="method.html"><strong> Methodology </strong></a>
+          </li>
+    <li class="nav-item">
+            <a class="nav-link" href="map.html"><strong> Map </strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="contact.html"><strong> Contact </strong></a>
+          </li>
+        </ul>
+      </div>
+</nav>
+
+
+
+<div id="contactform">
+ <div id="contactform">
+    <div id="c_title" class="container-fluid padding">
+    <div class="row welcome text-center">
+      <div class="col-12">
+        <h3 class="display-4"> Contact Form</h3>
+      </div>
+      <div class="col-12">
+        <h2 class="lead">If you have any questions on our project, please send us a message by filling in the below form. <br> We will try our best to answer all your inquries!</h2>
+      </div>
+    </div>
+  </div> 
+  
+  <section style="overflow: auto">
+    <div   class="containerx">
+      <!-- Submit to formspree API-->
+      <form action="https://formspree.io/f/moqyqgqd" method="POST" id="my-form">
+
+        <div class="form-group">
+          <label for="firstName"> First Name </label>
+          <input type="text" id="firstName" name="firstName">
+        </div>
+        <div class="form-group">
+          <label for="lastName"> Last Name </label>
+          <input type="text" id="lastName" name="lastName">
+        </div>
+        <div class="form-group">
+          <label for="email"> Email </label>
+          <input type="email" id="email" name="email">
+        </div>
+        <div class="form-group">
+          <label for="phoneNumber"> Phone Number</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber">
+        </div>
+
+        <div class="form-group">
+          <label for="message"> Message </label>
+          <textarea name="message" id="message" cols="30" rows="10"></textarea>
+        </div>
+
+        <button type="submit"> Submit </button> 
+
+      </form>
+    </div>
+
+    <div id="status">  </div>
+
+  </section>
+
+ </div>
+ </div>
+  <script src="main.js"></script>
+  
+<!--- Footer -->
+<footer>
+<div class="footer fixed-bottom"></div>
+<div class="container-fluid padding">
+<div class="row text-center">
+  <div class="col-md-4">
+    <img alt ='logo' src="img/rsz_logo_green.png" width="110" height="50">
+  </div>
+  <div class="col-md-4">
+    <img alt ='logo' src="img/arubrum.png" width="110" height="50">
+  </div>
+  <div class="col-md-4">
+    <img src="img/fleminglogo.png" alt= "fleming">
+  </div>
+  <div class="col-12">
+    <hr class="light">
+    <h5>&copy; Fahrenheit 2021</h5>
+  </div>
+</div>
+</div>
+</footer>
+
+</body>
+</html>
+
+</body>
+</html>

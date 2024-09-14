@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Forecast</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" 
+    crossorigin="anonymous">
+    <!-- Weather Icons -->
+    <link rel="stylesheet" type="text/css" href= "https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons-wind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Fonts -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
+    <!-- Bootsrap Links -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!-- JS for Ontario  polygon layer-->
+
+
+  
+     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+       integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+       crossorigin=""></script>
+       
+ 
+    <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
+  <!-- Load Esri Leaflet from CDN -->
+  <!-- Load Leaflet MarkerCluster and Esri Leaflet Cluster from CDN -->
+  
+ 
+    <style type="text/css">
+    body{
+        background-image: url("img/toronto1.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 0 auto;
+        color: white;
+        /*font-size: 150%;*/
+        
+    }
+    #map { position:absolute; 
+      top:105px; 
+      left: 22px;
+      bottom:0; 
+      height: 75%;
+                width: 75%;
+
+      
+      /*height: calc(.75 * 90vw);
+      /*max-width: 1000px;
+      max-height: 600px;
+      padding-left: 20px;
+      padding-right: 20px;*/
+      
+     }
+     div.transbox {
+      margin: 10px;
+  				background-color: #E2F0F4;
+  				
+  				float: left;
+				  width: 17%;
+				  position: absolute; 
+				 top: 90px; 
+				 right: 5px; 
+				 text-align: left;
+      
+      height: 25%;
+     
+      
+      
+    
+      /* opacity: 0.6; */
+     /* background-color: #ffffff;*/
+      border: 1px solid black;
+
+ 
+  
+}
+
+
+    /*.background {
+        position: absolute;
+        min-height: 100vh;
+        min-width: 100vw;
+        top: 0;
+        bottom: 100px;
+    
+    }*/
+    /*
+    #container{
+      display: block;
+      width: 90vw;
+      height: calc(.75 * 90vw);
+      max-width: 1000px;
+      max-height: 600px;
+      padding-left: 50px;
+      padding-top: 45px;
+       margin: 1em auto; } */
+     
+    #titleDiv {
+	position: absolute;
+	top: 155px;
+	right: 22px;
+	padding: 5px 15px;
+	background-color: rgba(0, 0, 0, 0.6);
+	color: lightgray;
+	text-align: right;
+}
+.ui-control {
+  background:#E2F0F4;
+  position:static;
+  top:10px;
+  right:10px;
+  padding:10px;
+  z-index:100;
+  border-radius:3px;
+  
+  text-align: left;
+  }
+    /*{
+      position: absolute;
+      top: 100px;
+  right: 40px;
+  width: 1200px;
+  height: 700px;
+  border: 2px solid #73AD21; }
+  #map {
+
+      position: absolute;
+      height: inherit; 
+        width: inherit;
+      top: 0;
+      bottom: 0;
+      left: 260px;
+      right: 0;
+      height: 100%;
+      width: 83.5%;
+      margin-top: 69px; */
+    
+    </style>
+</head>
+<body>
+
+
+<!-- Nav bars -->
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="index.html"><img alt ='logo' src="img/rsz_logo_green.png" width="110" height="50"><strong>Ontario</strong> Weather</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+  </div>
+      <div class="navbar-collapse collapse"  id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+     <a class="nav-link" href="index.html"><strong> Home </strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="method.html"><strong> Methodology </strong></a>
+          </li>
+    <li class="nav-item active">
+            <a class="nav-link" href="product.html"><strong> Product </strong></a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="contact.html"><strong> Contact </strong></a>
+          </li>
+        </ul>
+      </div>
+</nav>
+<!--
+<div class='input-group col-md-4' id='search' style="padding-left:16px">
+  <input class="form-control py-2" type="search" placeholder="Search Location" id="example-search-input">
+      <span class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button">
+            <i class="fa fa-search"></i>
+        </button>
+      </span>
+</div> -->
+
+
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css' rel='stylesheet' />
+<!--[if lt IE 9]>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.ie.css' rel='stylesheet' />
+<![endif]-->
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
+
+   <!-- id="navbarResponsive" --> 
+<div class="background">
+<div class="push"></div>
+<div id="container">
+  <div id ="map"></div></div>
+  <script>
+    
+
+    var token = L.mapbox.accessToken = 'pk.eyJ1IjoicmVlbHRvYnkiLCJhIjoiY2ttdGMzbXhsMHFoejJucG5qcXE3bHcwYiJ9.7eI2ScGwQiYs7DZUduN4NA';
+    var map = L.mapbox.map('map')
+    .setView([51.2538, -85.3232], 5)
+    .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'))
+  .addControl(L.mapbox.geocoderControl('mapbox.places', {
+      autocomplete: true
+  }));
+ 
+  L.control.locate().addTo(map);
+
+  
+
+
+    Street = L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11').addTo(map),
+    Satellite = L.mapbox.styleLayer('mapbox://styles/mapbox/satellite-v9'),
+    Outdoors = L.mapbox.styleLayer('mapbox://styles/mapbox/outdoors-v11')
+  
+
+    var baseMaps = {
+      "Street": Street,
+      "Satellite": Satellite,
+      'Outdoors': Outdoors
+      
+      
+     
+  };
+
+  var Temperature = (new L.tileLayer("http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=6a7e01daf992d16cd943dae3b79d1550")),
+    wind = (new L.tileLayer("http://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=6a7e01daf992d16cd943dae3b79d1550"));
+
+    var overlays = {
+  "Air Temperature" : Temperature,
+  "Wind Speed" : wind,
+  };
+  L.control.layers(baseMaps, overlays, {collapsed:true}).addTo(map);
+   
+      
+
+  map.on('mousemove click', function(e) {
+    //window[e.type].innerHTML = e.containerPoint.toString() + ', ' + e.latlng.toString();
+    window[e.type].innerHTML = e.latlng.toString();
+    
+});
+  
+ 
+
+
+ 
+
+
+
+  </script>
+  <div class="transbox">
+  <div id='output' class='ui-control'>
+    
+    
+      <p style="background-color:rgb(5, 22, 75); color:white; font-size: 90%;"><strong>Mousemove: </strong></p><strong><code id='mousemove' style='font-size: 100%;color:rgb(2, 14, 46);background-color: coral;'></code></strong><br/>
+      <p style="background-color:rgb(5, 22, 75); color:white; font-size: 90%;"><strong>Click: </strong></p><strong><code id='click' style='font-size: 100%; color:rgb(2, 14, 46); background-color: coral;'></code></strong><br/>
+      
+    </div>
+    
+  </div>
+</div>
+<!--- Footer -->
+
+</body>
+</html>
+
+
+
+
